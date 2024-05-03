@@ -84,7 +84,7 @@ class karyawan
 
     public function deleteKaryawan($no_karyawan)
     {
-        $sql = "DELETE FROM karyawan WHERE nim='$no_karyawan'";
+        $sql = "DELETE FROM karyawan WHERE no_karyawan='$no_karyawan'";
         if ($this->db->query($sql) === TRUE) {
             echo '<div class="mb-2 w-full rounded overflow-hidden shadow-lg bg-red-100">
             <div class="px-6 py-4">

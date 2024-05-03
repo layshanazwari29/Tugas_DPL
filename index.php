@@ -101,8 +101,40 @@
             </div>
         </div>
     </div>
+    <div class="w-full mx-auto bg-white p-6 rounded-lg shadow-xl overflow-x-auto">
+            <h1 class="font-bold text-xl mb-2">Data Karyawan</h1>
+            <table class="w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">No_karyawan</th>
+                        <th class="px-4 py-2">Nama</th>
+                        <th class="px-4 py-2">Alamat</th>
+                        <th class="px-4 py-2">Bidang</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $db = Database::getInstance()->getConnection();
+                    $result = $db->query("SELECT * FROM karyawan");
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr class='text-center'>";
+                            echo "<td class='px-4 py-2'>" . $row["no_karyawan"] . "</td>";
+                            echo "<td class='px-4 py-2'>" . $row["nama"] . "</td>";
+                            echo "<td class='px-4 py-2'>" . $row["alamat"] . "</td>";
+                            echo "<td class='px-4 py-2'>" . $row["bidang"] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>Data karyawan tidak ditemukan.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
 </html>
+
